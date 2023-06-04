@@ -1,0 +1,4 @@
+Validaçõe:
+  Notificações (Biblioteca:flunt)=> é uma forma de trocar mensagens entre as classes, então essa classe vai notificar outra parte do codigo através das notificações;
+  Identity (Biblioteca: identity.EntityFrameworkCore=> è um sistema de associação que permite adicionar funcionalidades de login e permissionamento ao seu aplicativo, e pode usar também provedores (google,facebook,twitter)
+  Claim => usadas para fornecer informações adicionar para os usuario authenticado
