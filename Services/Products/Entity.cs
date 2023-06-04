@@ -1,6 +1,6 @@
 using Flunt.Notifications;
 
-namespace AppRequest.Service;
+namespace AppRequest.Services.Products;
 public abstract class Entity : Notifiable<Notification>{
 
     public Entity(){

@@ -1,5 +1,5 @@
 using AppRequest.Repository.Data;
-using AppRequest.Service.Products;
+using AppRequest.Services.Products;
 
 
 namespace AppRequest.Controllers.Categories;

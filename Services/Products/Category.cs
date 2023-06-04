@@ -1,16 +1,36 @@
 using Flunt.Validations;
-namespace AppRequest.Service.Products;
+namespace AppRequest.Services.Products;
 public class Category :Entity{
-    public string Name {get;set;}
-    public bool Active {get;set;}
+    public string Name {get; private set;}
+    public bool Active {get;private set;}
   
-    public Category(string name)
+    public Category(string name,string createdBy, string editedBy)
         {
-            var contract = new Contract<Category>()
-                .IsNotNull(Name, "Name", "Nome é obrigatorio!");
-            AddNotifications(contract);
-            
+          
             Active = true;
             Name = name;
+            CreatedBy = createdBy;
+            CreatedOn = DateTime.Now;
+            EditedBy = EditedBy;
+            EditedOn = DateTime.Now;
+
+            Validate();
         }
+
+    public void Validate()
+    {
+          var contract = new Contract<Category>()
+                .IsGreaterOrEqualsThan(Name,3, "Name")
+                .IsNotNullOrEmpty(Name, "Name", "Nome é obrigatorio!")
+                .IsNotNullOrEmpty(CreatedBy, "CreatedBy")
+                .IsNotNullOrEmpty(EditedBy, "EditedBy");
+            AddNotifications(contract);  
+    }
+
+    public void EditInfo(string name, bool active){
+        Active = active;
+        Name = name;
+        Validate();
+    }
+
 }

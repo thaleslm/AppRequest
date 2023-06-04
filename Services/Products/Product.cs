@@ -1,4 +1,4 @@
-namespace AppRequest.Service.Products;
+namespace AppRequest.Services.Products;
 
 public class Product : Entity{
     public string Name {get;set;}
