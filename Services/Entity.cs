@@ -1,6 +1,7 @@
-namespace AppRequest.Service;
+using Flunt.Notifications;
 
-public abstract class Entity{
+namespace AppRequest.Service;
+public abstract class Entity : Notifiable<Notification>{
 
     public Entity(){
         //toda vez que estanciar as que herdaram Entity vai ter o id pronto

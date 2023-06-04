@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj": {}
+    "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj": {}
   },
   "projects": {
-    "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj": {
+    "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
+        "projectUniqueName": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
         "projectName": "AppRequest",
-        "projectPath": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
-        "packagesPath": "/home/thales/.nuget/packages/",
-        "outputPath": "/home/thales/Documents/studies/dotnet/AppRequest/obj/",
+        "projectPath": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
+        "packagesPath": "/home/tm/.nuget/packages/",
+        "outputPath": "/home/tm/Desktop/study/dotnet/AppRequest/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/thales/.nuget/NuGet/NuGet.Config"
+          "/home/tm/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Flunt": {
+              "target": "Package",
+              "version": "[2.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"

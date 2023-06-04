@@ -38,6 +38,15 @@
           "lib/netstandard2.0/Azure.Identity.dll": {}
         }
       },
+      "Flunt/2.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Flunt.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Flunt.dll": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1046,6 +1055,19 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Flunt/2.0.5": {
+      "sha512": "CMgq8FUYjkHzyZT3PhkUwZyy79mudON+EL4b0SAT7BfIOJ2CNypwnbdA0cPHAM2CYQfO2L8ubNJCiBHQOIv2pA==",
+      "type": "package",
+      "path": "flunt/2.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "flunt.2.0.5.nupkg.sha512",
+        "flunt.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Flunt.dll"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -3455,6 +3477,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Flunt >= 2.0.5",
       "Microsoft.EntityFrameworkCore >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
@@ -3462,19 +3485,19 @@
     ]
   },
   "packageFolders": {
-    "/home/thales/.nuget/packages/": {}
+    "/home/tm/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
+      "projectUniqueName": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
       "projectName": "AppRequest",
-      "projectPath": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
-      "packagesPath": "/home/thales/.nuget/packages/",
-      "outputPath": "/home/thales/Documents/studies/dotnet/AppRequest/obj/",
+      "projectPath": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
+      "packagesPath": "/home/tm/.nuget/packages/",
+      "outputPath": "/home/tm/Desktop/study/dotnet/AppRequest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/thales/.nuget/NuGet/NuGet.Config"
+        "/home/tm/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3498,6 +3521,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Flunt": {
+            "target": "Package",
+            "version": "[2.0.5, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[7.0.5, )"
