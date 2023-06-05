@@ -38,6 +38,15 @@
           "lib/netstandard2.0/Azure.Identity.dll": {}
         }
       },
+      "Dapper/2.0.123": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {}
+        }
+      },
       "Flunt/2.0.5": {
         "type": "package",
         "compile": {
@@ -55,6 +64,21 @@
         "runtime": {
           "lib/net6.0/Humanizer.dll": {}
         }
+      },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.10.0"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Microsoft.AspNetCore.Cryptography.Internal/6.0.0": {
         "type": "package",
@@ -1119,6 +1143,24 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
+    "Dapper/2.0.123": {
+      "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "type": "package",
+      "path": "dapper/2.0.123",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.123.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
     "Flunt/2.0.5": {
       "sha512": "CMgq8FUYjkHzyZT3PhkUwZyy79mudON+EL4b0SAT7BfIOJ2CNypwnbdA0cPHAM2CYQfO2L8ubNJCiBHQOIv2pA==",
       "type": "package",
@@ -1148,6 +1190,21 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.0": {
+      "sha512": "eIhpX25uUn33Ornnh718V2G/nESvk3TNX2FjTarv634GLfE50Fhz2geJ/QYpSmFaUIQ1hkZPfd9i0LcpZ9bfLQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+        "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
+        "microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/6.0.0": {
@@ -3630,7 +3687,9 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Dapper >= 2.0.123",
       "Flunt >= 2.0.5",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
@@ -3639,19 +3698,19 @@
     ]
   },
   "packageFolders": {
-    "/home/tm/.nuget/packages/": {}
+    "/home/thales/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
+      "projectUniqueName": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
       "projectName": "AppRequest",
-      "projectPath": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
-      "packagesPath": "/home/tm/.nuget/packages/",
-      "outputPath": "/home/tm/Desktop/study/dotnet/AppRequest/obj/",
+      "projectPath": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
+      "packagesPath": "/home/thales/.nuget/packages/",
+      "outputPath": "/home/thales/Documents/studies/dotnet/AppRequest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/tm/.nuget/NuGet/NuGet.Config"
+        "/home/thales/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3675,9 +3734,17 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Dapper": {
+            "target": "Package",
+            "version": "[2.0.123, )"
+          },
           "Flunt": {
             "target": "Package",
             "version": "[2.0.5, )"
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[6.0.0, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",

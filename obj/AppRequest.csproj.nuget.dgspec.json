@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj": {}
+    "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj": {}
   },
   "projects": {
-    "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj": {
+    "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
+        "projectUniqueName": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
         "projectName": "AppRequest",
-        "projectPath": "/home/tm/Desktop/study/dotnet/AppRequest/AppRequest.csproj",
-        "packagesPath": "/home/tm/.nuget/packages/",
-        "outputPath": "/home/tm/Desktop/study/dotnet/AppRequest/obj/",
+        "projectPath": "/home/thales/Documents/studies/dotnet/AppRequest/AppRequest.csproj",
+        "packagesPath": "/home/thales/.nuget/packages/",
+        "outputPath": "/home/thales/Documents/studies/dotnet/AppRequest/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/tm/.nuget/NuGet/NuGet.Config"
+          "/home/thales/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -38,9 +38,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
             "Flunt": {
               "target": "Package",
               "version": "[2.0.5, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",

@@ -164,3 +164,7 @@
 /home/tm/Desktop/study/dotnet/AppRequest/obj/Debug/net6.0/AppRequest.genruntimeconfig.cache
 /home/tm/Desktop/study/dotnet/AppRequest/bin/Debug/net6.0/Flunt.dll
 /home/tm/Desktop/study/dotnet/AppRequest/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/thales/Documents/studies/dotnet/AppRequest/bin/Debug/net6.0/Flunt.dll
+/home/thales/Documents/studies/dotnet/AppRequest/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/thales/Documents/studies/dotnet/AppRequest/bin/Debug/net6.0/Dapper.dll
+/home/thales/Documents/studies/dotnet/AppRequest/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

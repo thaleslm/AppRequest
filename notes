@@ -1,4 +1,38 @@
 Validaçõe:
   Notificações (Biblioteca:flunt)=> é uma forma de trocar mensagens entre as classes, então essa classe vai notificar outra parte do codigo através das notificações;
-  Identity (Biblioteca: identity.EntityFrameworkCore=> è um sistema de associação que permite adicionar funcionalidades de login e permissionamento ao seu aplicativo, e pode usar também provedores (google,facebook,twitter)
-  Claim => usadas para fornecer informações adicionar para os usuario authenticado
+  Identity (Biblioteca: identity.EntityFrameworkCore)=> è um sistema de associação que permite adicionar funcionalidades de login e permissionamento ao seu aplicativo, e pode usar também provedores (google,facebook,twitter);
+  Claim => usadas para fornecer informações adicionar para os usuario authenticado;
+  Dapper => Micro ORM porque tem menos funcionalidade e é mais leve;
+  Dapper efCore => normalmente você alia efCore para coisas gerais, e para coisas que vc precisa de peformace ultiliza o Dapper;
+  SSO => Em resumo, (SSO) é uma solução que permite aos usuários fazer login em várias aplicações ou sistemas com um único conjunto de credenciais, simplificando o processo de autenticação e melhorando a experiência do usuário.
+  OAuth => protocolo de (autorização e não de autenticação) que permite os usuarios ter acesso aweb site sem precisar expor suas crendnciais.
+        pq usar => Não necessita armazenar as credenciais dos usuarios para acesso futuro, não precisa utilizar autenticação de login e senha, nãon tera acesso ilimitado a conta do usuario
+
+
+
+Install : image SQLserver => sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=@Sql1234" -p 1433:1433 --name sqlserve --hostname sql1 -d  mcr.microsoft.com/mssql/server:2022-latest;
+
+
+pacotes para que a aplicaçã possa ultilizar o framwork core:
+	.dotnet add package Microsoft.EntityFrameworkCore
+	.dotnet add package Microsoft.EntityFrameworkCore.Design --migrations
+	..dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+	
+
+// migrations: Arquivos em c# que escreve em sql= cria as tabelas;
+	dotnet tool –global dotnet-ef
+cirado um migration : dotnet ef migrations add <nome>
+aplicar o migrate : dotnet ef database update
+
+SQL:
+	SELECT * from [dbo].[__EFMigrationsHistory]
+
+atualizar todos seus pacotes :
+	dotnet tool install –global dotnet-outdated-tool
+	dotnet outdated –upgrade
+
+RECORD:
+	proteje as entitys criando representações
+
+TOKEN: 
+  dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
