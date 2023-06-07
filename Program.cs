@@ -1,8 +1,11 @@
+using System.Text;
 using AppRequest.Controllers.Categories;
 using AppRequest.Controllers.Employee;
 using AppRequest.Controllers.Security;
 using AppRequest.Repository.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +28,27 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//serviço e tudo aquilo que eu digo que esta disponivel para o asp net usar
+builder.Services.AddAuthorization();//adiciona a parte de autorização do asp.net
+builder.Services.AddAuthentication(x =>{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>{
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateActor = true,//assinatura
+        ValidateAudience = true,//audience
+        ValidateLifetime = true,//tempo de vida
+        ValidateIssuerSigningKey = true,//secretKey
+        ValidIssuer = builder.Configuration["Jwr:Issuer"],
+        ValidAudience = builder.Configuration["Jwr:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))   //Chave de assinatura do emissor
+
+    };
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,7 +58,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
+//aqui estou habilitando para o aplicativo usar
 app.UseAuthorization();
+app.UseAuthentication();
 app.MapControllers();
 
 app.MapMethods(CategoryPost.Template,CategoryPost.Methods,CategoryPost.Handle);
