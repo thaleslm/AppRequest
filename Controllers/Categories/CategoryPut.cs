@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using AppRequest.Repository.Data;
 using AppRequest.Services.Products;
 using Microsoft.AspNetCore.Mvc;
@@ -9,12 +10,14 @@ public class CategoryPut{
      public static string[] Methods => new String[] { HttpMethod.Put.ToString()};
      public static Delegate Handle => Action;
 
-    public static IResult Action([FromRoute] Guid id ,CategoryRequest categoryRequest, ApplicationDbContext context){
+    public static IResult Action([FromRoute] Guid id ,CategoryRequest categoryRequest,HttpContext http, ApplicationDbContext context){
+        var userId = http.User.Claims.First(c=> c.Type == ClaimTypes.NameIdentifier).Value;
+
        var categories = context.Categories.Where(c => c.Id == id).FirstOrDefault();
        if(categories == null){
         return Results.NotFound("Categoria não encontrada!!");
        }
-       categories.EditInfo(categoryRequest.Name,categoryRequest.Active);
+       categories.EditInfo(categoryRequest.Name,categoryRequest.Active,userId);
         if(!categories.IsValid){
             return Results.ValidationProblem(categories.Notifications.ConvertToProblemDetails());
         }

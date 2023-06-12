@@ -6,6 +6,7 @@ using AppRequest.Repository.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,18 +19,25 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options=>{
     options.Password.RequireNonAlphanumeric =false;
     options.Password.RequireUppercase = false;
 }).AddEntityFrameworkStores<ApplicationDbContext>();
-//Enquanto durar a requisição essa classe estara na memoria;
-builder.Services.AddScoped<QueryAllUsersWithClaimName>();
-
 
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 //serviço e tudo aquilo que eu digo que esta disponivel para o asp net usar
-builder.Services.AddAuthorization();//adiciona a parte de autorização do asp.net
+builder.Services.AddAuthorization(options =>{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build();
+        //adicionando a politica de empregados 
+        options.AddPolicy("EmployeePolicy", p=>
+        p.RequireAuthenticatedUser().RequireClaim("EmployeeCode"));
+        //somente aquele usuario pode acessar aquela rota
+        options.AddPolicy("Employee005Policy", p=>
+        p.RequireAuthenticatedUser().RequireClaim("EmployeeCode","005"));
+         
+}
+);//adiciona a parte de autorização do asp.net
 builder.Services.AddAuthentication(x =>{
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -40,13 +48,19 @@ builder.Services.AddAuthentication(x =>{
         ValidateAudience = true,//audience
         ValidateLifetime = true,//tempo de vida
         ValidateIssuerSigningKey = true,//secretKey
+        ClockSkew = TimeSpan.Zero,//zero tempo de bonus após a expiração do token, default 60min
         ValidIssuer = builder.Configuration["Jwr:Issuer"],
         ValidAudience = builder.Configuration["Jwr:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))   //Chave de assinatura do emissor
 
     };
 });
+//Enquanto durar a requisição essa classe estara na memoria;
+builder.Services.AddScoped<QueryAllUsersWithClaimName>();
 
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
@@ -59,8 +73,8 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 //aqui estou habilitando para o aplicativo usar
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.MapMethods(CategoryPost.Template,CategoryPost.Methods,CategoryPost.Handle);

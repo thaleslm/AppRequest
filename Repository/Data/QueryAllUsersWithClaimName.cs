@@ -11,7 +11,7 @@ public class QueryAllUsersWithClaimName{
         this.configuration = configuration;
     }
 
-    public IEnumerable<EmployeeResponse> Execute(int page, int rows){
+    public async Task<IEnumerable<EmployeeResponse>> Execute(int page, int rows){
      
           var db = new SqlConnection(configuration["ConnectionString:SqlServer"]);
         var query = @"select Email, ClaimValue as Name
@@ -21,7 +21,7 @@ public class QueryAllUsersWithClaimName{
             order by name 
             OFFSET (@page - 1 ) * @rows ROWS FETCH NEXT @rows ROWS ONLY";
 
-        return db.Query<EmployeeResponse>(
+        return await db.QueryAsync<EmployeeResponse>(
             query,
             new {page, rows}
         );

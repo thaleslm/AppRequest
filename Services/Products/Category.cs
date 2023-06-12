@@ -11,7 +11,7 @@ public class Category :Entity{
             Name = name;
             CreatedBy = createdBy;
             CreatedOn = DateTime.Now;
-            EditedBy = EditedBy;
+            EditedBy = editedBy;
             EditedOn = DateTime.Now;
 
             Validate();
@@ -22,14 +22,16 @@ public class Category :Entity{
           var contract = new Contract<Category>()
                 .IsGreaterOrEqualsThan(Name,3, "Name")
                 .IsNotNullOrEmpty(Name, "Name", "Nome é obrigatorio!")
-                .IsNotNullOrEmpty(CreatedBy, "CreatedBy")
-                .IsNotNullOrEmpty(EditedBy, "EditedBy");
+                .IsNotNullOrEmpty(CreatedBy, "CreatedBy","createdBy e obrigatorio");
+                // .IsNotNullOrEmpty(EditedBy, "EditedBy");
             AddNotifications(contract);  
     }
 
-    public void EditInfo(string name, bool active){
+    public void EditInfo(string name, bool active,string editedBy){
         Active = active;
         Name = name;
+        EditedBy = editedBy;
+        EditedOn = DateTime.Now;
         Validate();
     }
 

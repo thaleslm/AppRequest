@@ -35,4 +35,31 @@ RECORD:
 	proteje as entitys criando representações
 
 TOKEN: 
-  dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+  nunca deve deixar no localStorage e sim na memoria do browser porque ai ninguem consegue consultar esse token
+  dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer;
+  
+  [Authorize]
+  [AlowAnonymous]
+
+POLICES:
+  Politicas de seguranças que a gente define, você define qual e a regra que você deseja usar para que determinados endpoints devem estar dentro dessa regra quando
+usuarios forem authenticados;
+
+CPU CORE:
+  (Núcleo de Processamento): Pense no CPU Core como uma pequena "máquina" dentro do processador do seu computador que executa tarefas. Se você tiver vários núcleos, é como se tivesse várias dessas "máquinas" trabalhando juntas para fazer as coisas mais rapidamente.
+
+THREAD:
+   Uma thread é como uma linha de tarefas que o processador pode executar. Pense em uma lista de tarefas que você precisa fazer, e cada item da lista é uma thread. Com várias threads, o processador pode trabalhar em diferentes tarefas ao mesmo tempo, dividindo o trabalho entre elas.
+
+PROCESSO:
+  Um processo é como um programa em execução. Imagine que você tem vários aplicativos abertos no seu computador, cada um deles é um processo separado. Cada processo tem suas próprias tarefas para executar e usa recursos (como memória) para fazer isso.
+
+  Resumindo, um CPU Core é uma "máquina" dentro do processador que executa tarefas, uma thread é uma linha de tarefas que o processador pode executar, e um processo é um programa em execução com suas próprias tarefas. Ter vários núcleos e threads permite que o computador execute várias tarefas ao mesmo tempo e de forma mais eficiente.
+
+
+BLOCK TASK:
+  Acontece quando vc tem um processo Syncrono quando uma tarefa fica parada ou bloqueada aguardando a conclusão de alguma operação externa;
+
+PROCESS ASYNC:
+  Em vez de executar uma tarefa por vez em ordem sequencial, os processos assíncronos permitem que várias tarefas sejam iniciadas simultaneamente e executadas em paralelo
+  todo processo asynchrono ele retorna uma tarefa uma task
